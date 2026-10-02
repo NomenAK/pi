@@ -41,8 +41,10 @@ const RETRYABLE_PROVIDER_ERROR_PATTERN = buildProviderErrorPattern([
 	"internal.?error",
 
 	// Wrapper/provider text for transient upstream failures, including OpenRouter
-	// "Provider returned error" responses (#2264).
+	// "Provider returned error" responses (#2264) and OpenRouter mid-stream
+	// upstream failures reported as "Error injected into SSE stream".
 	"provider.?returned.?error",
+	"error injected into SSE stream",
 	"exceeded request buffer limit while retrying upstream",
 
 	// Network, proxy, and fetch transport failures. This includes OpenAI Codex
