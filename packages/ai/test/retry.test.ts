@@ -53,6 +53,14 @@ describe("provider retry classification", () => {
 		).toBe(true);
 	});
 
+	it("matches OpenRouter mid-stream upstream error wording", () => {
+		expect(
+			isRetryableAssistantError(
+				fauxAssistantMessage("", { stopReason: "error", errorMessage: "Error injected into SSE stream" }),
+			),
+		).toBe(true);
+	});
+
 	it.each([
 		wrappedDnsLookupError,
 		"connect ENOTFOUND api.example.com",
